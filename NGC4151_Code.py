@@ -13,9 +13,7 @@ YEAR = input('Which Year are you looking at? ')
 OBS = input('What observation are you investigating? ')
 
 # Reading the data
-#Spec = open(f'/content/drive/My Drive/{YEAR}/{OBS}.dat') #Open the file
-
-Spec = open(f'/content/drive/MyDrive/Colab Notebooks/NGC4151_ORBYTS/{YEAR}/{OBS}.dat') #Open the file
+Spec = open(f'/{YEAR}/{OBS}.dat') #Open the file
 
 Spec = np.recfromtxt(Spec, names=['Wave', 'Wave_E', 'Wave_e', 'Flux', 'Flux_E', 'Flux_e', 'Model', 'Back'])
 #Read the file and set the names of the columns
@@ -34,7 +32,7 @@ plt.xlim(7, 37) #Sets the limits of the x axis between 7 and 28 A
 plt.ylim(-1, 35) #Sets the limits of the y axis between -1 and 80 Counts/s/m^2/A
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
-plt.show() #Shows the plotO
+plt.show() #Shows the plot
 
 plt.figure()
 plt.subplot(311)
@@ -179,7 +177,7 @@ def Dist(v, G, M):
     return(R)
 G = 6.67E-11 #Gravitational constant
 M_sol = 1.9891E30 #Mass of sun in kg
-M = 4E7 * M_sol #black hole mass
+M = 4E7 * M_sol #black hole mass \citep{Bentz_Katz2015}
 v_out = v_out #outflow velocity
 
 R = Dist(v_out, G, M)
@@ -227,7 +225,7 @@ YEAR = input('Which Year are you looking at? ')
 OBS = input('What observation are you investigating? ')
 
 #This reads the spreadsheet from the epoch (Year) and Observation (OBS)
-NGCspreadsheetfile=glob.glob(f'/content/drive/My Drive/Colab Notebooks/NGC4151_ORBYTS/{YEAR}/*.xls*')
+NGCspreadsheetfile=glob.glob(f'/{YEAR}/*.xls*')
 df=pd.ExcelFile(NGCspreadsheetfile[0])
 
 #Python reads the columns for the values of interest and saves them in a list "Sheetlist = []"
@@ -248,7 +246,6 @@ plt.plot(X, Y, color='grey')
 #The FOR loop says: "for each emission line in the table column, put each value for CEN, WID and AMP 
 #into the Gaussian model and plot this on the spectrum. 
 #Repeat untill all rows have been completed and all emission lines have been fitted.
-
 
 for i in range(len(df[df.columns[1]])):
     cen=df[df.columns[1]]*1.00332
@@ -272,6 +269,7 @@ for i in range(len(df[df.columns[1]])):
     
     plt.plot(X, result1.init_fit, color='red')
 
+#Example plots from columns in the spreadsheet
 plt.xlabel(r'Wavelength ($\AA$)', fontsize=18)
 plt.ylabel(r'Flux (Counts/s/$m^2$/$\AA$)', fontsize = 18)
 plt.xticks(fontsize=18)
