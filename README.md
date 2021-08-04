@@ -15,5 +15,14 @@ The widths of each RRC line is approximately equal to the thermal energy of the 
 
 **R_G_Ratios.py**
 
+**Analysis_Table.xls**
 
+Table template to place your results; this table is then read later to plot data or obtain R and G ratio values. Change name accordingly - for example 'YEAR' of observation; the tabs refer to the epoch observation. The columns (in Python notation) are:
 
+[1] Observed wavelength value; [2] Observed wavelength error
+[3] Line amplitude value; [4] [3] Line amplitude error
+[5] Line width value (wavelength units); [6] Line width error (wavelength units)
+[7] Line width value (velocity units); [8] Line width error (velocity units)
+[9] Rest wavelength (from SPEX line list: ); [10] Ion name
+[11] Line velocity value; [12] Line velocity error
+[13] Distance value; [14] Distance error
