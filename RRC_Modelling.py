@@ -24,11 +24,7 @@ c = 3E8 #Speed of light
 
 #Set the x-axis range in terms of
 
-X_W = Spec.Wave/1.00332 #Wavelength units
-X_E = ((h*c)/((Spec.Wave/1.00332*1E-10)))/1.6E-19 #Energy units
-
-#Delete where appropriate
-
+X = ((h*c)/((Spec.Wave/1.00332*1E-10)))/1.6E-19 #Energy units
 Y = Spec.Flux #Flux column
 X_err = Spec.Wave_E #Wavelength errors column
 Y_err = Spec.Flux_E #Flux errors column
@@ -40,9 +36,8 @@ x_up = float(input('Upper x-limit '))
 
 xdat = []
 ydat = []
-T = list(zip(X_W, Y)) #wavelength
-T = list(zip(X_E, Y)) #Energy
-#Delete where appropriate
+T = list(zip(X, Y))
+
 
 for i in range(len(T)):
 	if T[i][0] > x_low and T[i][0] <= x_up:
@@ -53,9 +48,7 @@ Y = ydat
 
 #Plot to check that the x-axis range is correct
 plt.plot(X, Y, '-')
-plt.xlabel(r'Wavelength ($\AA$)', fontsize=18) #Sets the x axis label (wavelength units)
 plt.xlabel(r'Energy (eV)', fontsize=18) #Sets the x axis label (energy units)
-#Delete where appropriate
 plt.ylabel(r'Flux (Counts/s/$m^2$/$\AA$)', fontsize = 18) #Sets the y axis label (incluing units)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
@@ -90,9 +83,7 @@ plt.plot(X, Y)
 plt.plot(X, NGM.init_fit, color='red')
 plt.plot(X, SGM.init_fit, color='blue')
 
-plt.xlabel(r'Wavelength ($\AA$)', fontsize=18) #Sets the x axis label (wavelength units)
 plt.xlabel(r'Energy (eV)', fontsize=18) #Sets the x axis label (energy units)
-#Delete where appropriate
 plt.ylabel(r'Flux (Counts/s/$m^2$/$\AA$)', fontsize = 18) #Sets the y axis label (incluing units)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
@@ -106,9 +97,7 @@ plt.plot(X, Y)
 plt.plot(X, NGM.best_fit, color='red')
 plt.plot(X, SGM.best_fit, color='blue')
 
-plt.xlabel(r'Wavelength ($\AA$)', fontsize=18) #Sets the x axis label (wavelength units)
 plt.xlabel(r'Energy (eV)', fontsize=18) #Sets the x axis label (energy units)
-#Delete where appropriate
 plt.ylabel(r'Flux (Counts/s/$m^2$/$\AA$)', fontsize = 18) #Sets the y axis label (incluing units)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
