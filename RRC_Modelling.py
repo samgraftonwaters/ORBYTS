@@ -10,6 +10,9 @@ from scipy.stats import maxwell
 import scipy.stats as stats
 from mpmath import *
 
+#AGN redshift
+z = input('What is the redshift of the AGN?')
+
 #What epoch are you studying?
 YEAR = input('Which Year are you looking at? ')
 
@@ -24,7 +27,7 @@ c = 3E8 #Speed of light
 
 #Set the x-axis range in terms of
 
-X = ((h*c)/((Spec.Wave/1.00332*1E-10)))/1.6E-19 #Energy units
+X = ((h*c)/((Spec.Wave/z*1E-10)))/1.6E-19 #Energy units
 Y = Spec.Flux #Flux column
 X_err = Spec.Wave_E #Wavelength errors column
 Y_err = Spec.Flux_E #Flux errors column
