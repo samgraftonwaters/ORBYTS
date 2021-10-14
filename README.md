@@ -5,7 +5,7 @@ To cite these codes, use **DOI: 10.5281/zenodo.5116838 @ https://zenodo.org/reco
 
 **NGC4151_Code.py** 
 
-This code is used to fit Gaussian models to the strong emission lines in the RGS spectra, where the amplidute, line centre and width are measured. From here, the line shift can be calculated, allowing for the velocity and distance of each line to be calculated. This means the number of plasma clouds in the outflowing wind can be determined. See **S. Grafton-Waters et al 2021 Res. Notes AAS 5 172** (https://doi.org/10.3847/2515-5172/ac1689) for further details.
+This code is used to fit Gaussian models to the strong emission lines in the RGS spectra, where the amplidute, line centre and width are measured. From here, the line shift can be calculated, allowing for the velocity and distance of each line to be calculated. This means the number of plasma clouds in the outflowing wind can be determined. See **S. Grafton-Waters et al 2021 Res. Notes AAS 5 172** (https://doi.org/10.3847/2515-5172/ac1689) for further details. This is the code you need to model your AGN spectrum.
 
 **RRC_Modelling.py**
 
@@ -13,7 +13,13 @@ This code is used to study the radiative recombination continua (RRC) features i
 
 The widths of each RRC line is approximately equal to the thermal energy of the plasma, kT. Therefore, this code estimates the plasma temperature based on the width. Two models are utalised here - the skewed Gaussian model (SGM) and normal Gaussian model (NGM).
 
+The study of the RRCs in NGC 4151 using this code can be found at **S. Grafton-Waters et al 2021 Res. Notes AAS Accepted**
+
 **R_G_Ratios.py**
+
+Calculating the R and G ratio values in order to obtain the density and temperature diagnostics of the plasma using Tables 7 and 8 in **Porquet, D., & Dubau, J. 2000, A&AS, 143, 495** (https://aas.aanda.org/articles/aas/abs/2000/09/ds1759/ds1759.html). This gives an estimate of the internal properties of the outflowing wind without complex spectral codes. 
+
+The study of the RRCs in NGC 4151 using this code can be found at **S. Grafton-Waters et al 2021 Res. Notes AAS Accepted**.
 
 **Analysis_Table.xls**
 
