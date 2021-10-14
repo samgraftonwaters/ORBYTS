@@ -7,6 +7,9 @@ import pandas as pd
 import glob
 plt.rcParams['figure.figsize'] = [10, 8]
 
+#AGN redshift
+z = input('What is the redshift of the AGN?')
+
 # 2000, 2003, 2006, 2011, 2012, 2015
 YEAR = input('Which Year are you looking at? ')
 # Obs1, Obs2, Obs3 ...
@@ -19,7 +22,7 @@ Spec = np.recfromtxt(Spec, names=['Wave', 'Wave_E', 'Wave_e', 'Flux', 'Flux_E', 
 #Read the file and set the names of the columns
 
 #From the table, choose the columns we want to use
-X = Spec.Wave/1.00332  #Wavelength column
+X = Spec.Wave/z  #Wavelength column
 Y = Spec.Flux #Flux column
 X_err = Spec.Wave_E #Wavelength errors column
 Y_err = Spec.Flux_E #Flux errors column
