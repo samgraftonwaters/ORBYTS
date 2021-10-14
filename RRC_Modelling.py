@@ -161,14 +161,31 @@ amp_err = SGM.params['amplitude'].stderr
 wid_err = SGM.params['sigma'].stderr
 skew_err = SGM.params['gamma'].stderr
 
-#Calculate the plasma temperature from the RRC width
+#Calculate the plasma temperature from the RRC width assuming FWHM = 2.355 * sigma, which is the same as the NGM
 k = 1.38E-23 #Boltzmann constant
-FWHM = wid_val * 2.355 #Define the full width half maximum (FWHM)
+FWHM_norm = wid_val * 2.355 #Define the full width half maximum (FWHM)
 
-T = (FWHM * 1.6E-16)/k #Measured plasma temperature
+T_norm = (FWHM_norm * 1.6E-16)/k #Measured plasma temperature
 
-FWHM_Err = wid_val+wid_err * 2.355 #calculating the error in the temperature
+FWHM_norm_Err = wid_val+wid_err * 2.355 #calculating the error in the temperature
+T_norm_err = (FWHM_norm_Err * 1.6E-16)/k
+T_norm_ERR = T_norm - T_norm_err
+
+print('T =', T_norm,'±', T_norm_ERR) #Temperature and error
+
+"""Alternatively, you can estiamte the width of the RRC using the relation from Rusch, P. F., & Lelieur, J. P. 1973, AC, 45, 1541, 
+doi: 10.1021/ac60330a060 (https://pubs.acs.org/doi/abs/10.1021/ac60330a060):"""
+
+k = 1.38E-23
+FWHM = wid_val * np.sinh(skew_val)/skew_val
+
+T = (FWHM * 1.6E-16)/k
+#print(T)
+
+FWHM_Err = (wid_val - wid_err) * (np.sinh(skew_val - skew_err)/(skew_val - skew_err))
 T_err = (FWHM_Err * 1.6E-16)/k
-T_ERR = T - T_err
+print(T_err)
+
+T_ERR =  T - T_err
 
 print('T =', T,'±', T_ERR) #Temperature and error
